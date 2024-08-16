@@ -90,6 +90,7 @@
     "@vitejs/plugin-vue": "~5.1.2",
     "@vitejs/plugin-vue-jsx": "~4.0.0",
     "@vue/tsconfig": "^0.5.1",
+    "code-inspector-plugin": "^0.15.2",
     "commitizen": "~4.3.0",
     "conventional-changelog-cli": "~4.1.0",
     "core-js": "^3.37.1",

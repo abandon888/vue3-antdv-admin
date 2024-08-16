@@ -5,9 +5,9 @@
     </template>
     <template #right-content>
       <DynamicTable
-        header-title="用户管理"
+        header-title="新闻管理"
         show-index
-        title-tooltip="请不要随意删除用户，避免到影响其他用户的使用。"
+        title-tooltip="请不要随意删除新闻，避免到影响用户的使用。"
         :data-request="loadTableData"
         :columns="columns"
         :scroll="{ x: 2000 }"

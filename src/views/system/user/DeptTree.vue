@@ -76,7 +76,7 @@
 
 <template>
   <div :style="{ '--border': 1 }" class="header">
-    <div class="title">组织架构</div>
+    <div class="title">新闻标签</div>
     <a-input-search v-model:value="searchValue" size="small" placeholder="搜索" />
     <a-dropdown>
       <Icon icon="ant-design:more-outlined" size="20" class="flex-shrink-0" />

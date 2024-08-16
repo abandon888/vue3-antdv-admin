@@ -13,6 +13,7 @@ import mockServerPlugin from '@admin-pkg/vite-plugin-msw/vite';
 import TinymceResourcePlugin from '@admin-pkg/vite-plugin-tinymce-resource';
 import Http2Proxy from '@admin-pkg/vite-plugin-http2-proxy';
 import Inspector from 'vite-plugin-vue-inspector';
+import { codeInspectorPlugin } from 'code-inspector-plugin';
 import pkg from './package.json';
 import type { UserConfig, ConfigEnv } from 'vite';
 
@@ -56,6 +57,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vueJsx({
         // options are passed on to @vue/babel-plugin-jsx
       }),
+      codeInspectorPlugin({ bundler: 'vite' }),
       // 指定 mkcert 的下载源为 coding，从 coding.net 镜像下载证书
       mkcert({ source: 'coding' }),
       // 开启 http2 代理

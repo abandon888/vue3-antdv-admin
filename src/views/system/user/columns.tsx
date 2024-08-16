@@ -12,25 +12,25 @@ export const getAvatarUrl = (path: string) => {
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '头像',
+    title: '新闻封面',
     width: 80,
     dataIndex: 'avatar',
     hideInSearch: true,
     customRender: ({ record }) => <Avatar src={getAvatarUrl(record.avatar)} />,
   },
   {
-    title: '用户名',
+    title: '新闻名称',
     width: 120,
     dataIndex: 'username',
   },
   {
-    title: '呢称',
+    title: '小标题',
     width: 120,
     hideInSearch: true,
     dataIndex: 'nickname',
   },
   {
-    title: '所在部门',
+    title: '新闻标签',
     dataIndex: 'dept',
     hideInSearch: true,
     width: 180,
@@ -39,7 +39,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '所属角色',
+    title: '所属类别',
     dataIndex: 'roleNames',
     hideInSearch: true,
     width: 220,
