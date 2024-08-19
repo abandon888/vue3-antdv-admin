@@ -1,4 +1,4 @@
-import { Tag, Tooltip, Image, Progress } from 'ant-design-vue';
+import { Tag, Image, Progress } from 'ant-design-vue';
 import type { TableColumn } from '@/components/core/dynamic-table';
 import type { FormSchema } from '@/components/core/schema-form';
 import { formatToDateTime } from '@/utils/dateUtil';
@@ -25,26 +25,6 @@ export enum UploadResultStatus {
 
 export const baseColumns: TableColumnItem[] = [
   {
-    title: '文件名',
-    dataIndex: 'name',
-    width: 150,
-    ellipsis: true,
-    customRender({ record }) {
-      return (
-        <Tooltip>
-          {{
-            title: () => record.path,
-            default: () => (
-              <a href={baseApiUrl + record.path} target="_blank">
-                {record.name}
-              </a>
-            ),
-          }}
-        </Tooltip>
-      );
-    },
-  },
-  {
     title: '预览图',
     dataIndex: 'path',
     width: 150,
@@ -53,12 +33,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '文件后缀',
-    dataIndex: 'extName',
-    width: 80,
-  },
-  {
-    title: '类别',
+    title: '新闻类别',
     dataIndex: 'type',
     width: 80,
   },
@@ -71,7 +46,7 @@ export const baseColumns: TableColumnItem[] = [
     },
   },
   {
-    title: '上传者',
+    title: '新闻作者',
     dataIndex: 'username',
     width: 120,
   },
