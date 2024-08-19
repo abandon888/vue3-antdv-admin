@@ -6,12 +6,12 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'avatar',
     component: () => AvatarUpload,
-    label: '头像',
+    label: '新闻封面',
   },
   {
     field: 'deptId',
     component: 'TreeSelect',
-    label: '所属部门',
+    label: '新闻标签',
     componentProps: {
       fieldNames: {
         label: 'name',
@@ -24,7 +24,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'roleIds',
     component: 'Select',
-    label: '所属角色',
+    label: '所属类别',
     rules: [{ required: true, type: 'array' }],
     componentProps: {
       mode: 'multiple',
@@ -37,37 +37,14 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'username',
     component: 'Input',
-    label: '用户名',
+    label: '新闻名称',
     rules: [{ required: true }],
   },
   {
     field: 'password',
-    label: '密码',
-    component: 'InputPassword',
-    componentProps: {
-      placeholder: '无需修改请留空',
-    },
-  },
-  {
-    field: 'nickname',
     component: 'Input',
-    label: '呢称',
-    colProps: {
-      span: 12,
-    },
-  },
-  {
-    field: 'email',
-    component: 'Input',
-    label: '邮箱',
-    colProps: {
-      span: 12,
-    },
-  },
-  {
-    field: 'phone',
-    component: 'Input',
-    label: '手机',
+    label: '作者联系方式',
+    // defaultValue: '123456@gmail.com',
     colProps: {
       span: 12,
     },
@@ -75,7 +52,7 @@ export const userSchemas: FormSchema<API.UserDto>[] = [
   {
     field: 'remark',
     component: 'InputTextArea',
-    label: '备注',
+    label: '文章内容',
   },
   {
     field: 'status',

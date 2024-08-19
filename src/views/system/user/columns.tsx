@@ -1,4 +1,4 @@
-import { Avatar, Space, Tag } from 'ant-design-vue';
+import { Image, Space, Tag } from 'ant-design-vue';
 import type { TableColumn } from '@/components/core/dynamic-table';
 import { formatToDateTime } from '@/utils/dateUtil';
 import { baseApiUrl } from '@/utils/request';
@@ -13,21 +13,15 @@ export const getAvatarUrl = (path: string) => {
 export const baseColumns: TableColumnItem[] = [
   {
     title: '新闻封面',
-    width: 80,
+    width: 120,
     dataIndex: 'avatar',
     hideInSearch: true,
-    customRender: ({ record }) => <Avatar src={getAvatarUrl(record.avatar)} />,
+    customRender: ({ record }) => <Image src={getAvatarUrl(record.avatar)} />,
   },
   {
-    title: '新闻名称',
+    title: '新闻标题',
     width: 120,
     dataIndex: 'username',
-  },
-  {
-    title: '小标题',
-    width: 120,
-    hideInSearch: true,
-    dataIndex: 'nickname',
   },
   {
     title: '新闻标签',
@@ -42,7 +36,7 @@ export const baseColumns: TableColumnItem[] = [
     title: '所属类别',
     dataIndex: 'roleNames',
     hideInSearch: true,
-    width: 220,
+    width: 180,
     customRender: ({ record }) => (
       <Space>
         {record.roles.map((item) => (
@@ -54,18 +48,13 @@ export const baseColumns: TableColumnItem[] = [
     ),
   },
   {
-    title: '邮箱',
+    title: '作者邮箱',
     width: 120,
     dataIndex: 'email',
   },
   {
-    title: '手机',
-    width: 120,
-    dataIndex: 'phone',
-  },
-  {
-    title: '备注',
-    width: 120,
+    title: '文章内容',
+    width: 200,
     dataIndex: 'remark',
   },
   {
