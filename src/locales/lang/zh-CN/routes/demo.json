@@ -1,7 +1,7 @@
 {
-  "demo": "demo演示",
+  "demo": "预览演示",
   "button": "按钮的扩展",
-  "modal": "可拖拽弹窗",
+  "modal": "新闻预览",
   "form": {
     "demo": "表单演示",
     "basic": "基础表单",
