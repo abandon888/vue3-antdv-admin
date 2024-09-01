@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
           icon: 'ant-design:desktop-outlined',
           keepAlive: false,
         },
-        component: () => import('@/views/demos/custom-modal.vue'),
+        component: () => import('@/views/demos/news.vue'),
       },
       {
         path: 'button',
@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
           icon: 'ant-design:desktop-outlined',
           keepAlive: false,
         },
-        component: () => import('@/views/demos/button.vue'),
+        component: () => import('@/views/tool/storage/index.vue'),
       },
       {
         path: 'form',

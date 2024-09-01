@@ -47,7 +47,7 @@
 <script setup lang="tsx">
   import { ref, computed, reactive } from 'vue';
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-  import { Modal, Alert, Image } from 'ant-design-vue';
+  import { Modal, Alert } from 'ant-design-vue';
   import { userSchemas } from './formSchemas';
   import { baseColumns, type TableListItem, type TableColumnItem } from './columns';
   import DeptTree from './DeptTree.vue';
@@ -67,28 +67,7 @@
     visible: false,
   });
   const handleOpenUseModal = () => {
-    UseModalComp.show({
-      title: '目标导向与问题导向',
-      content: (
-        <>
-          <Image src="3A%2F%2Fcms-bucket.ws.126.net%2F2024%2F0819%2Fdd48e7f1p00sift6e001sc0008c00b4c.png&thumbnail=300y400&quality=100&type=jpg" />
-          <p>
-            “坚持目标导向和问题导向相结合”，是新时代中国改革发展的重要特征，也是全面深化改革不断向纵深推进的重要经验。
-          </p>
-          <p>
-            新时代以来，从党的十八届三中全会首次提出全面深化改革的总目标；到72次中央深改委（领导小组）会议锚定总目标进行顶层设计，审议通过超过600份改革文件……正是因为坚持目标引领，突出问题导向，改革精准发力、势如破竹，以前所未有的力度打开了崭新局面。
-          </p>
-          <p>
-            党的二十届三中全会聚焦七个重点领域，提出300多项重要改革举措。进一步全面深化改革，要锚定继续完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化这个总目标，落实习近平总书记“紧扣推进中国式现代化，坚持目标导向和问题导向相结合”的要求。
-          </p>
-          {/* 继续添加内容 */}
-          <p>
-            目标是行动的指南，问题是突破的方向。把进一步全面深化改革的全景图变为现实，很重要的一点就是处理好目标导向与问题导向的关系，既要有“咬定青山不放松”的战略定力，又要有“奔着问题去、盯着问题改”的行动自觉。
-          </p>
-          {/* 添加更多内容 */}
-        </>
-      ),
-    });
+    console.log('handleOpenUseModal');
   };
 
   const [DynamicTable, dynamicTableInstance] = useTable({ formProps: { autoSubmitOnEnter: true } });

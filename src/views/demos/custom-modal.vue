@@ -1,69 +1,79 @@
 <template>
-  <div>
-    <Alert message="自定义模态框" type="info" show-icon style="margin-bottom: 12px">
-      <template #description>
-        对ant-design-vue的modal进行二次封装，自定义一个可拖拽、可调整大小的模态框，
-        <span class="text-red-500">
-          Tips: 如果你的弹窗依赖于App上下文（provide/inject），你应该使用`useModal组件方式`
-        </span>
-        <a
-          class="text-blue-500"
-          target="_blank"
-          href="https://github.com/buqiyuan/vue3-antdv-admin/blob/main/src/views/demos/custom-modal.vue"
-        >
-          查看源码
-        </a>
-      </template>
-    </Alert>
-    <a-card>
-      <Space>
-        <a-button type="primary" @click="state.visible = true">普通组件方式</a-button>
-        <a-button type="primary" @click="handleOpenUseModal">useModal组件方式</a-button>
-        <a-button type="primary" @click="handleOpenHookModal">hook纯函数式</a-button>
-      </Space>
-    </a-card>
-    <DraggableModal v-model:open="state.visible" @ok="onOk" />
-    <UseModalComp />
-  </div>
+  <a-card :title="title">
+    <a-list item-layout="vertical">
+      <a-list-item v-for="(item, index) in newsItems" :key="index">
+        <a-list-item-meta>
+          <template #avatar>
+            <img v-if="item.sourceLogo" :src="item.sourceLogo" alt="source logo" />
+          </template>
+          <template #title>
+            <span>{{ item.source }}</span>
+          </template>
+          <template #description>
+            <span>{{ item.title }}</span>
+          </template>
+        </a-list-item-meta>
+        <div v-if="expandedKeys.includes(index)">
+          <p>{{ item.description }}</p>
+          <CommentSection />
+        </div>
+        <a-button type="link" @click="toggleExpand(index)">
+          {{ expandedKeys.includes(index) ? '收起' : '展开' }}
+        </a-button>
+      </a-list-item>
+    </a-list>
+  </a-card>
 </template>
 
-<script setup lang="tsx">
-  import { reactive } from 'vue';
-  import { Alert, Space } from 'ant-design-vue';
-  import { DraggableModal } from '@/components/core/draggable-modal';
-  import { useModal } from '@/hooks/useModal';
+<script lang="ts" setup>
+  import { ref, defineProps } from 'vue';
+  import CommentSection from './button.vue';
 
-  defineOptions({
-    name: 'CustomModal',
-  });
+  interface NewsItem {
+    source: string;
+    sourceLogo?: string;
+    title: string;
+    description: string;
+  }
 
-  /**
-   * @description 扩展ant-design-vue模态框功能
-   */
+  const props = defineProps<{
+    title: string;
+    newsItems: NewsItem[];
+  }>();
 
-  const [fnModal] = useModal();
-  const [UseModalComp] = useModal();
+  const expandedKeys = ref<number[]>([]);
 
-  const state = reactive({
-    visible: false,
-  });
-
-  const handleOpenHookModal = () => {
-    fnModal.show({
-      title: '我是hook纯函数式模态框',
-      content: 'hello',
-    });
-  };
-  const handleOpenUseModal = () => {
-    UseModalComp.show({
-      title: '我是UseModalComp',
-      content: '嘿嘿嘿',
-    });
-  };
-
-  const onOk = () => {
-    state.visible = false;
+  const toggleExpand = (index: number) => {
+    if (expandedKeys.value.includes(index)) {
+      expandedKeys.value = expandedKeys.value.filter((key) => key !== index);
+    } else {
+      expandedKeys.value.push(index);
+    }
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  a-card {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  a-list-item-meta-title {
+    font-weight: bold;
+  }
+
+  a-list-item-meta-description {
+    color: #333;
+  }
+
+  a-button {
+    margin-top: 10px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+</style>
